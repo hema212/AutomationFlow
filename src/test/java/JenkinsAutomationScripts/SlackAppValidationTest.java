@@ -107,10 +107,12 @@ public class SlackAppValidationTest extends InitiateDriver{
 		String alertTextCapture = slackappobject.AlertText().getText();
 		if (alertTextCapture.equalsIgnoreCase("Please complete this required field.")) {
 			slackappobject.amountDropdown().click();
-			slackappobject.customAmountText().click();
 			Thread.sleep(1000L);
+			slackappobject.customAmountText().click();
+			Thread.sleep(2000L);
 			slackappobject.customInputField().sendKeys("1");
 			slackappobject.messageInputField().sendKeys("Posting here and testing");
+			Thread.sleep(1000L);
 			slackappobject.giveRecognitionButton().click();
 		}
 		Thread.sleep(1000L);
