@@ -119,6 +119,7 @@ public class SlackAppValidationTest extends InitiateDriver{
 		System.out.println("The header text is " + slackappobject.recogSentHeader().getText());
 		Assert.assertEquals(slackappobject.recogSentHeader().getText(), "Give recognition");
 		System.out.println("Testcase-3 passed since recognition is given");
+		Thread.sleep(1000L);
 		slackappobject.closeButton().click();
 	}
 }
