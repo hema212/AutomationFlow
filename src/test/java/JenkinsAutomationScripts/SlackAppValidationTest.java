@@ -20,8 +20,7 @@ public class SlackAppValidationTest extends InitiateDriver{
 	public SlackAppPageObjects slackappobject;
 	public SlackIdentityObjects slackobject;
 
-
-	 @BeforeTest
+	@BeforeTest
 	public void Init() throws FileNotFoundException, IOException {
 		// driver = initializeDriver();
 		slackappobject = new SlackAppPageObjects(driver);
@@ -55,20 +54,20 @@ public class SlackAppValidationTest extends InitiateDriver{
 
 	@Test(priority = 3)
 	public void ValidateGiveRecogUsingSlash() throws InterruptedException {
-		Thread.sleep(2000L);
-		slackappobject.inputTextField().sendKeys("/give-recognition-dev");
-		slackappobject.inputTextField().sendKeys(Keys.ENTER);
-		slackappobject.sendButton().isDisplayed();
-
-		System.out.println("Is send button is Displayed? " + slackappobject.sendButton().isDisplayed());
-		if (true) {
-			slackappobject.sendButton().click();
-		} 
-		//slackappobject.continueWithoutAuthorizationButton().click(); 
+		Thread.sleep(4000L);
+		slackappobject.inputTextField().sendKeys("/give-recognition-dev ");
+		  slackappobject.sendButton().isDisplayed();
+		  
+		  System.out.println("Is send button is Displayed? " +
+		  slackappobject.sendButton().isDisplayed()); if (true) { //
+		  Thread.sleep(1000L); slackappobject.sendButton().click();
+		  }
+		 
+		//slackappobject.continueWithoutAuthorizationButton().click(); /give-recognition-dev 
 		Thread.sleep(1000L);
-	//	giveRecognitionFunc();
+		giveRecognitionFunc();
 
-	} 
+	}
 
 	/*
 	 * // Validate removing existing user from slack when slack is connected and
