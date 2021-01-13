@@ -15,17 +15,13 @@ import slackPageObjects.SlackAppPageObjects;
 import slackPageObjects.SlackIdentityObjects;
 
 //Execute this 7th once SlackIntegrationFlowValidation is done
-public class SlackAppValidationTest {
+public class SlackAppValidationTest extends InitiateDriver{
 	public static Logger log = LogManager.getLogger(SlackAppValidationTest.class.getName());
 	public SlackAppPageObjects slackappobject;
 	public SlackIdentityObjects slackobject;
-	
-	@Test(priority = 1)
-	public void tescase1() {
-	System.out.println("Executed");	
-	}
 
-	/* @BeforeTest
+
+	 @BeforeTest
 	public void Init() throws FileNotFoundException, IOException {
 		// driver = initializeDriver();
 		slackappobject = new SlackAppPageObjects(driver);
@@ -71,7 +67,7 @@ public class SlackAppValidationTest {
 		Thread.sleep(1000L);
 	//	giveRecognitionFunc();
 
-	} */
+	} 
 
 	/*
 	 * // Validate removing existing user from slack when slack is connected and
