@@ -99,6 +99,7 @@ public class SlackAppValidationTest extends InitiateDriver{
 	 */
 	
 	public void giveRecognitionFunc() throws InterruptedException {
+		Thread.sleep(2000L);
 		slackappobject.selectTeamMember().sendKeys("fabul");
 		Thread.sleep(1000L);
 		slackappobject.selectTeamMember().sendKeys(Keys.ENTER);
