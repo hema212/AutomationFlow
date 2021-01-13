@@ -22,7 +22,7 @@ public class InitiateDriver {
 
 	@BeforeTest
 	public WebDriver initializeDriver() throws IOException, FileNotFoundException {
-		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Work\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
 		try {
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments(Arrays.asList("--no-sandbox", "--ignore-certificate-errors", "--homepage=about:blank",
