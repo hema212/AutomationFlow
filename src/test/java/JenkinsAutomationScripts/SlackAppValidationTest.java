@@ -99,7 +99,7 @@ public class SlackAppValidationTest extends InitiateDriver{
 	 */
 	
 	public void giveRecognitionFunc() throws InterruptedException {
-		Thread.sleep(2000L);
+		Thread.sleep(1000L);
 		slackappobject.selectTeamMember().sendKeys("fabul");
 		Thread.sleep(1000L);
 		slackappobject.selectTeamMember().sendKeys(Keys.ENTER);
@@ -108,6 +108,7 @@ public class SlackAppValidationTest extends InitiateDriver{
 		if (alertTextCapture.equalsIgnoreCase("Please complete this required field.")) {
 			slackappobject.amountDropdown().click();
 			slackappobject.customAmountText().click();
+			Thread.sleep(1000L);
 			slackappobject.customInputField().sendKeys("1");
 			slackappobject.messageInputField().sendKeys("Posting here and testing");
 			slackappobject.giveRecognitionButton().click();
