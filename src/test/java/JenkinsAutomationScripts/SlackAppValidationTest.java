@@ -66,21 +66,18 @@ public class SlackAppValidationTest extends InitiateDriver{
 		giveRecognitionFunc();
 
 	}
-/*
-	// Validate Give Recognition using slack app
+// Validate Give Recognition using short cut
 	@Test(priority = 4)
-	public void ValidateGiveRecogUsingShortCut() throws InterruptedException {
-		Thread.sleep(2000L);
-		slackappobject.inputTextField().sendKeys("/give recognition");
-		System.out.println("Trying to give recognition using short cut '/give recognition dev'");
+	public void ValidateGiveRecogUsingShortcut() throws InterruptedException {
+		Thread.sleep(4000L);
+		slackappobject.inputTextField().sendKeys("/give recognition dev ");
 		Thread.sleep(1000L);
 		slackappobject.inputTextField().sendKeys(Keys.ENTER);
 		Thread.sleep(1000L);
 		giveRecognitionFunc();
 
 	}
-	*/
-	
+
 	
 	public void giveRecognitionFunc() throws InterruptedException {
 		Thread.sleep(1000L);
