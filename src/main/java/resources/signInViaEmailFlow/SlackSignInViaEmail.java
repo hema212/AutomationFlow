@@ -11,8 +11,7 @@ import giveRecognitionPageObjects.loginPageObjects;
 import resources.InitiateDriver;
 
 public class SlackSignInViaEmail extends InitiateDriver {
-
-	// public static Logger log = LogManager.getLogger(Base.class.getName());
+// public static Logger log = LogManager.getLogger(Base.class.getName());
 
 	@Test
 	public void validateLogin() throws FileNotFoundException, IOException, InterruptedException {
@@ -21,8 +20,7 @@ public class SlackSignInViaEmail extends InitiateDriver {
 	}
 
 	public void validateValidLogin() throws InterruptedException {
-		driver.manage().window().maximize();
-		driver.get(baseurl);
+
 		log.info("executing on the browser " + baseurl);
 		log.info("Navigated to the provided URL");
 		// Create an object for loginObjects class of pageObjects
@@ -37,6 +35,7 @@ public class SlackSignInViaEmail extends InitiateDriver {
 		Thread.sleep(1000L);
 		loginobject.signinObject().click();
 		RecognitionPageObject recogobject = new RecognitionPageObject(driver);
+		Thread.sleep(4000L);
 		String mainContent = recogobject.giveRecognitionText().getText();
 		if (mainContent == null) {
 			log.info("failed to login!");
