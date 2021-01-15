@@ -27,7 +27,7 @@ public class InitiateDriver {
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments(Arrays.asList("--no-sandbox", "--ignore-certificate-errors", "--homepage=about:blank",
 					"--no-first-run"));
-			//options.addArguments("disable-infobars", "headless");
+			options.addArguments("disable-infobars", "headless");
 			options.setCapability(ChromeOptions.CAPABILITY, options);
 			options.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
 			driver = new ChromeDriver(options);
