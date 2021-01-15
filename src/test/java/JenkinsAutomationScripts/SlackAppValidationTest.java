@@ -66,7 +66,7 @@ public class SlackAppValidationTest extends InitiateDriver{
 		giveRecognitionFunc();
 
 	}
-
+/*
 	// Validate Give Recognition using slack app
 	@Test(priority = 4)
 	public void ValidateGiveRecogUsingShortCut() throws InterruptedException {
@@ -79,6 +79,7 @@ public class SlackAppValidationTest extends InitiateDriver{
 		giveRecognitionFunc();
 
 	}
+	*/
 	
 	
 	public void giveRecognitionFunc() throws InterruptedException {
