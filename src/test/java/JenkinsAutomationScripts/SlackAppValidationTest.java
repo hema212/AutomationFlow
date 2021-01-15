@@ -70,13 +70,10 @@ public class SlackAppValidationTest extends InitiateDriver{
 // Validate Give Recognition using short cut
 	@Test(priority = 4)
 	public void ValidateGiveRecogUsingShortcut() throws InterruptedException {
-		System.out.println("entering into testcase 4");
 		Thread.sleep(4000L);
 		slackappobject.inputTextField().sendKeys("/give recognition dev ");
-		System.out.println("entering into testcase 4");
 		Thread.sleep(1000L);
 		slackappobject.inputTextField().sendKeys(Keys.ENTER);
-		System.out.println("entering into testcase 4");
 		Thread.sleep(1000L);
 		giveRecognitionFunc();
 
@@ -85,14 +82,11 @@ public class SlackAppValidationTest extends InitiateDriver{
 	
 	public void giveRecognitionFunc() throws InterruptedException {
 		Thread.sleep(1000L);
-		System.out.println("testcase 4");
 		slackappobject.selectTeamMember().sendKeys("fabul");
-		System.out.println("testcase 4");
-		Thread.sleep(1000L);
 		slackappobject.selectTeamMember().sendKeys(Keys.ENTER);
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		slackappobject.giveRecognitionButton().click();
-		
+		System.out.println("entering into testcase 42");
 		String alertTextCapture = slackappobject.AlertText().getText();
 		System.out.println("entering into testcase 42");
 		if (alertTextCapture.equalsIgnoreCase("Please complete this required field.")) {
