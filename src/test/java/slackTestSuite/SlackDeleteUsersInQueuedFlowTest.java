@@ -1,5 +1,8 @@
 package slackTestSuite;
 	
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -9,7 +12,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import signInViaEmailFlow.SlackSignInViaEmail;
+import signInViaEmail.SlackSignInViaEmail;
 import slackPageObjects.SlackIdentityObjects;
 
 public class SlackDeleteUsersInQueuedFlowTest extends SlackSignInViaEmail {
@@ -17,111 +20,111 @@ public class SlackDeleteUsersInQueuedFlowTest extends SlackSignInViaEmail {
 	public static SlackIdentityObjects slackobject;
 
 	@BeforeTest
-	public void init() {
+	public void init()  throws FileNotFoundException, IOException {
+		driver = initializeDriver();
 		slackobject = new SlackIdentityObjects(driver);
 	}
 
-	@Test(priority = 1)
-	public void validateCancelButtonOnClick() throws InterruptedException {
-		slackIconPagevalidateOnClick();
-		validateConnectPageAssertion();
-		System.out.println("Is cancel button Enabled in Connect page? " + slackobject.CancelButton().isEnabled());
-		System.out.println(
-				"Is Connect Slack button Enabled in Connect page? " + slackobject.ConnectSlackButton().isEnabled());
-		cancelButtonClickvalidate();
-		validateManagePageAssertion();
-		System.out.println(
-				"Testcase-2 passed since application landed on Manage page and Assertion passed after clicked on Cancel button in Connect page");
-	}
+	// validate Manage landing page when slack is not connected
+		@Test(priority = 1)
+		public void managePageSetup() throws InterruptedException {
+			selectManageSideNavbar();
+			validateManagePageAssertion();
+			log.info("Testcase-1 passed since application landed on Manage page and Assertion passed");
+		}
+
+		// validate Cancel button click on cancel
+		@Test(priority = 2)
+		public void validateCancelButtonOnClick() throws InterruptedException {
+			slackIconPagevalidateOnClick();
+			validateConnectPageAssertion();
+			log.info("Is cancel button Enabled in Connect page? " + slackobject.CancelButton().isEnabled());
+			log.info("Is Connect Slack button Enabled in Connect page? " + slackobject.ConnectSlackButton().isEnabled());
+			cancelButtonClickvalidate();
+			validateManagePageAssertion();
+			log.info(
+					"Testcase-2 passed since application landed on Manage page and Assertion passed after clicked on Cancel button in Connect page");
+		}
+
 
 	// validate connecting to slack and disconnecting on click of cancel button and
 	// click on sure button
-	@Test(priority = 2)
-	public void connectSlackOnCancel() throws InterruptedException {
-		slackIconPagevalidateOnClick();
-		slackobject.ConnectSlackButton().click();
-		validateSignInSlackAppAssertion();
-		slackWorkspaceFlow();
-		nevermindButtonvalidate();
-		System.out.println("User has clicked on Nevermind button");
-		Thread.sleep(1000L);
-		// validateSelectPeopleAssertion();
-		sureButtonClickvalidate();
-		System.out.println("User has clicked on Sure button");
-		Thread.sleep(1000L);
-		// validateConnectPageAssertion();
-		System.out.println("Testcase-3 passed since application connected to slack by entering details and"
-				+ " disonnected on click of I'm sure button after cancel button clicked");
-	}
-
-	// validate Queued invites flow when selected I'll send them later
-	@Test(priority = 3)
-	public void validateQueuedInvitesFlow() throws InterruptedException {
-		slackIconPagevalidateOnClick();
-		slackobject.ConnectSlackButton().click();
-		validateSlackAppActualHeaderAssertion();
-		Thread.sleep(3000L);
-		slackobject.AllowButton().click();
-		Thread.sleep(4000L);
-		validateSelectPeopleAssertion();
-		System.out.println("Selected Everyone radio button option which is default when user lands");
-		Thread.sleep(3000L);
-		slackobject.ContinueWithEveryoneButton().click();
-		validateConfigureInvitesAssertion();
-		slackobject.SendThemLaterRadio().click();
-		Thread.sleep(1000L);
-		System.out.println("Selected I'll send them later and admin approval Radio button option");
-		slackobject.CreateAssemblyAccountsButton().click();
-		@SuppressWarnings("deprecation")
-		WebDriverWait wait = new WebDriverWait(driver, 20);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(), 'View')]")));
-		validateCreateAccountAssertion();
-		System.out.println("Testcase-4 passed since application clicked on I'll send them later button");
-	}
-
-	// validate Queued invites flow on click of View Queued Invites Button
-	@Test(priority = 4)
-	public void validateQueuedInvitesFlowOnView() throws InterruptedException {
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeScript("window.scrollBy(0,1000)");
-		@SuppressWarnings("deprecation")
-		WebDriverWait wait = new WebDriverWait(driver, 20);
-		wait.until(ExpectedConditions
-				.visibilityOfElementLocated(By.xpath("//span[contains(text(), 'Disconnect Slack')]")));
-		Thread.sleep(9000L);
-		disconnectIdentityManagementOnKeepIt();
-		System.out.println("User has click on 'No, Keep it button in Create Accounts page");
-		validateCreateAccountAssertion();
-		System.out.println(
-				"View Queued Invites button is displayed? " + slackobject.viewPeopleInviteButton().isEnabled());
-		System.out.println(
-				"Testcase-4 passed since Queued Invites flow is selected on choosing send them" + " later button");
-		slackobject.viewPeopleInviteButton().click();
-		System.out.println("Testcase-5 passed since application landed on Invites Page On Queued invite");
-
-	}
-
-	// Verify user lands on Invites page and does bulk delete operation
-	@Test(priority = 6)
-	public void DeleteUsersFromQueuedInvites() throws InterruptedException {
-		Thread.sleep(2000L);
-		slackobject.InviteText().click();
-		String breadcrum = slackobject.InvitesBreadcrum().getText();
-		Assert.assertEquals(breadcrum, "> Invites");
-		slackobject.SelectAllCheckBox().click();
-		slackobject.DeleteButton().click();
-		deleteQueuedInvitesModalAssertion();
-		Thread.sleep(1000L);
-		slackobject.ImSureButton().click();
-		System.out.println("The success toast message after deleting users from queued invites is:"
-				+ slackobject.successToast().getText());
-		Thread.sleep(1000L);
-		slackobject.ManageText().click();
-		String activeMembers = slackobject.ActiveMembersCount().getText();
-		Assert.assertEquals(activeMembers, "1 members active");
-		System.out.println("Testcase-6 passed since only owner is present in Assembly");
-
-	}
+	/*
+	 * @Test(priority = 3) public void connectSlackOnCancel() throws
+	 * InterruptedException { slackIconPagevalidateOnClick();
+	 * slackobject.ConnectSlackButton().click(); validateSignInSlackAppAssertion();
+	 * slackWorkspaceFlow(); nevermindButtonvalidate();
+	 * System.out.println("User has clicked on Nevermind button");
+	 * Thread.sleep(1000L); // validateSelectPeopleAssertion();
+	 * sureButtonClickvalidate();
+	 * System.out.println("User has clicked on Sure button"); Thread.sleep(1000L);
+	 * // validateConnectPageAssertion(); System.out.
+	 * println("Testcase-3 passed since application connected to slack by entering details and"
+	 * + " disonnected on click of I'm sure button after cancel button clicked"); }
+	 * 
+	 * // validate Queued invites flow when selected I'll send them later
+	 * 
+	 * @Test(priority = 4) public void validateQueuedInvitesFlow() throws
+	 * InterruptedException { slackIconPagevalidateOnClick();
+	 * slackobject.ConnectSlackButton().click();
+	 * validateSlackAppActualHeaderAssertion(); Thread.sleep(3000L);
+	 * slackobject.AllowButton().click(); Thread.sleep(4000L);
+	 * validateSelectPeopleAssertion(); System.out.
+	 * println("Selected Everyone radio button option which is default when user lands"
+	 * ); Thread.sleep(3000L); slackobject.ContinueWithEveryoneButton().click();
+	 * validateConfigureInvitesAssertion();
+	 * slackobject.SendThemLaterRadio().click(); Thread.sleep(1000L); System.out.
+	 * println("Selected I'll send them later and admin approval Radio button option"
+	 * ); slackobject.CreateAssemblyAccountsButton().click();
+	 * 
+	 * @SuppressWarnings("deprecation") WebDriverWait wait = new
+	 * WebDriverWait(driver, 20);
+	 * wait.until(ExpectedConditions.visibilityOfElementLocated(By.
+	 * xpath("//span[contains(text(), 'View')]")));
+	 * validateCreateAccountAssertion(); System.out.
+	 * println("Testcase-4 passed since application clicked on I'll send them later button"
+	 * ); }
+	 * 
+	 * // validate Queued invites flow on click of View Queued Invites Button
+	 * 
+	 * @Test(priority = 5) public void validateQueuedInvitesFlowOnView() throws
+	 * InterruptedException { JavascriptExecutor js = (JavascriptExecutor) driver;
+	 * js.executeScript("window.scrollBy(0,1000)");
+	 * 
+	 * @SuppressWarnings("deprecation") WebDriverWait wait = new
+	 * WebDriverWait(driver, 20); wait.until(ExpectedConditions
+	 * .visibilityOfElementLocated(By.
+	 * xpath("//span[contains(text(), 'Disconnect Slack')]"))); Thread.sleep(9000L);
+	 * disconnectIdentityManagementOnKeepIt(); System.out.
+	 * println("User has click on 'No, Keep it button in Create Accounts page");
+	 * validateCreateAccountAssertion(); System.out.println(
+	 * "View Queued Invites button is displayed? " +
+	 * slackobject.viewPeopleInviteButton().isEnabled()); System.out.println(
+	 * "Testcase-4 passed since Queued Invites flow is selected on choosing send them"
+	 * + " later button"); slackobject.viewPeopleInviteButton().click(); System.out.
+	 * println("Testcase-5 passed since application landed on Invites Page On Queued invite"
+	 * );
+	 * 
+	 * }
+	 * 
+	 * // Verify user lands on Invites page and does bulk delete operation
+	 * 
+	 * @Test(priority = 6) public void DeleteUsersFromQueuedInvites() throws
+	 * InterruptedException { Thread.sleep(2000L); slackobject.InviteText().click();
+	 * String breadcrum = slackobject.InvitesBreadcrum().getText();
+	 * Assert.assertEquals(breadcrum, "> Invites");
+	 * slackobject.SelectAllCheckBox().click(); slackobject.DeleteButton().click();
+	 * deleteQueuedInvitesModalAssertion(); Thread.sleep(1000L);
+	 * slackobject.ImSureButton().click(); System.out.
+	 * println("The success toast message after deleting users from queued invites is:"
+	 * + slackobject.successToast().getText()); Thread.sleep(1000L);
+	 * slackobject.ManageText().click(); String activeMembers =
+	 * slackobject.ActiveMembersCount().getText();
+	 * Assert.assertEquals(activeMembers, "1 members active"); System.out.
+	 * println("Testcase-6 passed since only owner is present in Assembly");
+	 * 
+	 * }
+	 */
 
 	// Function to validate landing page of Manage
 	public void selectManageSideNavbar() throws InterruptedException {
