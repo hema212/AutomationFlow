@@ -3,8 +3,10 @@ package slackTestSuite;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.Keys;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
@@ -16,6 +18,7 @@ import slackPageObjects.SlackIdentityObjects;
 
 //Execute this 7th once SlackIntegrationFlowValidation is done
 public class SlackAppValidation extends InitiateDriver {
+	public WebDriver driver;
 	public static Logger log = LogManager.getLogger(SlackAppValidation.class.getName());
 	public SlackAppPageObjects slackappobject;
 	public SlackIdentityObjects slackobject;
