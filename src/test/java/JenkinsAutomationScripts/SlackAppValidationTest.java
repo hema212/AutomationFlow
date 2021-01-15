@@ -69,6 +69,7 @@ public class SlackAppValidationTest extends InitiateDriver{
 // Validate Give Recognition using short cut
 	@Test(priority = 4)
 	public void ValidateGiveRecogUsingShortcut() throws InterruptedException {
+		System.out.println("entering into testcase 4");
 		Thread.sleep(4000L);
 		slackappobject.inputTextField().sendKeys("/give recognition dev ");
 		Thread.sleep(1000L);
