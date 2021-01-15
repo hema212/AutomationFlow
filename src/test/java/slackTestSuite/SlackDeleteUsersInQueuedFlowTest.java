@@ -28,6 +28,7 @@ public class SlackDeleteUsersInQueuedFlowTest extends SlackSignInViaEmail {
 	// validate Manage landing page when slack is not connected
 		@Test(priority = 1)
 		public void managePageSetup() throws InterruptedException {
+			Thread.sleep(2000L);
 			selectManageSideNavbar();
 			validateManagePageAssertion();
 			log.info("Testcase-1 passed since application landed on Manage page and Assertion passed");
