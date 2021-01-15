@@ -12,27 +12,34 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import giveRecognitionPageObjects.RecognitionPageObject;
 import signInViaEmail.SlackSignInViaEmail;
 import slackPageObjects.SlackIdentityObjects;
 
 public class SlackDeleteUsersInQueuedFlowTest extends SlackSignInViaEmail {
-	public static WebDriver driver;
-	public static SlackIdentityObjects slackobject;
+	public  WebDriver driver;
+	public  SlackIdentityObjects slackobject;
+	public  RecognitionPageObject recogobject;
+	
 
 	@BeforeTest
-	public void init()  throws FileNotFoundException, IOException {
+	public void init() throws FileNotFoundException, IOException {
 		driver = initializeDriver();
 		slackobject = new SlackIdentityObjects(driver);
+		recogobject = new RecognitionPageObject(driver);
 	}
 
 	// validate Manage landing page when slack is not connected
-		@Test(priority = 1)
-		public void managePageSetup() throws InterruptedException {
-			Thread.sleep(2000L);
-			selectManageSideNavbar();
-			validateManagePageAssertion();
-			log.info("Testcase-1 passed since application landed on Manage page and Assertion passed");
-		}
+	@Test(priority = 1)
+	public void managePageSetup() throws InterruptedException {
+		Thread.sleep(3000L);
+		String giveRecogText = recogobject.giveRecognitionText().getText();
+		System.out.println("The home page text is" + giveRecogText);
+		//selectManageSideNavbar();
+		//validateManagePageAssertion();
+		//log.info("Testcase-1 passed since application landed on Manage page and Assertion passed");
+	}
+
 
 	/*	// validate Cancel button click on cancel
 		@Test(priority = 2)
