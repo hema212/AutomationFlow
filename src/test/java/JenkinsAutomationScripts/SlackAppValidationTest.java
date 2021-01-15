@@ -87,11 +87,11 @@ public class SlackAppValidationTest extends InitiateDriver{
 		Thread.sleep(1000L);
 		slackappobject.selectTeamMember().sendKeys(Keys.ENTER);
 		Thread.sleep(3000);
-		System.out.println("Keys.enter is successful");
+		System.out.println("Entered username successfully");
 		slackappobject.giveRecognitionButton().click();
 		Thread.sleep(1000L);
 		String alertTextCapture = slackappobject.AlertText().getText();
-		System.out.println("Keys.enter is successful");
+		System.out.println("Alert message is "+ alertTextCapture);
 		if (alertTextCapture.equalsIgnoreCase("Please complete this required field.")) {
 			slackappobject.amountDropdown().click();
 			Thread.sleep(1000L);
