@@ -57,8 +57,7 @@ public class SlackAppValidationTest extends InitiateDriver{
 		slackappobject.inputTextField().sendKeys("/give-recognition-dev ");
 		System.out.println("Trying to give recognition using /give-recognition-dev ");
 		  slackappobject.sendButton().isDisplayed();
-		  System.out.println("Is send button Displayed? " +
-		  slackappobject.sendButton().isDisplayed()); 
+		  System.out.println("Is send button Displayed? " +slackappobject.sendButton().isDisplayed()); 
 		if (true) {
 		  Thread.sleep(1000L); 
 			slackappobject.sendButton().click();
@@ -73,7 +72,7 @@ public class SlackAppValidationTest extends InitiateDriver{
 	public void ValidateGiveRecogUsingShortCut() throws InterruptedException {
 		Thread.sleep(2000L);
 		slackappobject.inputTextField().sendKeys("/give recognition");
-		System.out.println("Trying to give recognition using short cut '/give recognition dev');
+		System.out.println("Trying to give recognition using short cut '/give recognition dev'");
 		Thread.sleep(1000L);
 		slackappobject.inputTextField.sendKeys(Keys.ENTER);
 		Thread.sleep(1000L);
