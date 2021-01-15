@@ -72,8 +72,10 @@ public class SlackAppValidationTest extends InitiateDriver{
 		System.out.println("entering into testcase 4");
 		Thread.sleep(4000L);
 		slackappobject.inputTextField().sendKeys("/give recognition dev ");
+		System.out.println("entering into testcase 4");
 		Thread.sleep(1000L);
 		slackappobject.inputTextField().sendKeys(Keys.ENTER);
+		System.out.println("entering into testcase 4");
 		Thread.sleep(1000L);
 		giveRecognitionFunc();
 
@@ -82,7 +84,9 @@ public class SlackAppValidationTest extends InitiateDriver{
 	
 	public void giveRecognitionFunc() throws InterruptedException {
 		Thread.sleep(1000L);
+		System.out.println("entering into testcase 4");
 		slackappobject.selectTeamMember().sendKeys("fabul");
+		System.out.println("entering into testcase 4");
 		Thread.sleep(1000L);
 		slackappobject.selectTeamMember().sendKeys(Keys.ENTER);
 		slackappobject.giveRecognitionButton().click();
