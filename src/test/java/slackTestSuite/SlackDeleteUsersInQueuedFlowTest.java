@@ -34,7 +34,7 @@ public class SlackDeleteUsersInQueuedFlowTest extends SlackSignInViaEmail {
 			log.info("Testcase-1 passed since application landed on Manage page and Assertion passed");
 		}
 
-		// validate Cancel button click on cancel
+	/*	// validate Cancel button click on cancel
 		@Test(priority = 2)
 		public void validateCancelButtonOnClick() throws InterruptedException {
 			slackIconPagevalidateOnClick();
@@ -46,7 +46,7 @@ public class SlackDeleteUsersInQueuedFlowTest extends SlackSignInViaEmail {
 			log.info(
 					"Testcase-2 passed since application landed on Manage page and Assertion passed after clicked on Cancel button in Connect page");
 		}
-
+*/
 
 	// validate connecting to slack and disconnecting on click of cancel button and
 	// click on sure button
