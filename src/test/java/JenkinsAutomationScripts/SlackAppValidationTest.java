@@ -74,7 +74,7 @@ public class SlackAppValidationTest extends InitiateDriver{
 		slackappobject.inputTextField().sendKeys("/give recognition");
 		System.out.println("Trying to give recognition using short cut '/give recognition dev'");
 		Thread.sleep(1000L);
-		slackappobject.inputTextField.sendKeys(Keys.ENTER);
+		slackappobject.inputTextField().sendKeys(Keys.ENTER);
 		Thread.sleep(1000L);
 		giveRecognitionFunc();
 
