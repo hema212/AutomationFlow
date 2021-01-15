@@ -37,10 +37,10 @@ public class SlackAppValidationTest extends InitiateDriver{
 		System.out.println("Testcase-1 passed since slack url is launched");
 	}
 
-	// Validate SSO sign in functionality
+	// Validate sign in functionality to slack account
 	@Test(priority = 2)
 	public void SignInUsingSlack() throws InterruptedException {
-		System.out.println("Signing in using SSO!!");
+		System.out.println("Signing in using Slack account username & Pwd ");
 		Thread.sleep(2000L);
 		slackobject.SlackInputField().sendKeys("joinassembly21");
 		slackobject.SlackContinueSubmitButton().click();
@@ -51,52 +51,36 @@ public class SlackAppValidationTest extends InitiateDriver{
 	}
 
 	// Validate Give Recognition using slack app
-
 	@Test(priority = 3)
 	public void ValidateGiveRecogUsingSlash() throws InterruptedException {
 		Thread.sleep(4000L);
 		slackappobject.inputTextField().sendKeys("/give-recognition-dev ");
+		System.out.println("Trying to give recognition using /give-recognition-dev ");
 		  slackappobject.sendButton().isDisplayed();
-		  
-		  System.out.println("Is send button is Displayed? " +
-		  slackappobject.sendButton().isDisplayed()); if (true) { //
-		  Thread.sleep(1000L); slackappobject.sendButton().click();
+		  System.out.println("Is send button Displayed? " +
+		  slackappobject.sendButton().isDisplayed()); 
+		if (true) {
+		  Thread.sleep(1000L); 
+			slackappobject.sendButton().click();
 		  }
-		 
-		//slackappobject.continueWithoutAuthorizationButton().click(); /give-recognition-dev 
 		Thread.sleep(1000L);
 		giveRecognitionFunc();
 
 	}
 
-	/*
-	 * // Validate removing existing user from slack when slack is connected and
-	 * auto // approve is enabled
-	 * 
-	 * @Test(priority = 4) public void RemoveExistingUser() throws
-	 * InterruptedException { Thread.sleep(1000L);
-	 * slackappobject.viewAllMemberButton().click();
-	 * slackappobject.removeVijayButton().click(); Thread.sleep(1000L); String
-	 * actualRemovalHeader = slackappobject.removeModalHeader().getText();
-	 * Assert.assertEquals(actualRemovalHeader, "Remove @vijay"); System.out.
-	 * println("Assertion passed since user Vijay is selected for removal");
-	 * Thread.sleep(1000L); slackappobject.yesRemoveButton().click(); System.out.
-	 * println("Testcase-4 passed since user Vijay has been removed from channel");
-	 * }
-	 * 
-	 * // Validate adding user from slack when slack is connected and auto approve
-	 * is // enabled
-	 * 
-	 * @Test(priority = 5) public void AddNewUser() throws InterruptedException {
-	 * Thread.sleep(1000L); slackappobject.addUser().click();
-	 * slackappobject.addUserEmailInputField().sendKeys(
-	 * "pranesh+join21@joinassembly.com"); Thread.sleep(1000L);
-	 * slackappobject.addUserEmailInputField().sendKeys(Keys.ENTER);
-	 * slackappobject.addButton().click(); slackappobject.FinishedButton().click();
-	 * System.out.
-	 * println("Testcase-5 passed since user PRANESH has been added to the channel"
-	 * ); }
-	 */
+	// Validate Give Recognition using slack app
+	@Test(priority = 4)
+	public void ValidateGiveRecogUsingShortCut() throws InterruptedException {
+		Thread.sleep(2000L);
+		slackappobject.inputTextField().sendKeys("/give recognition");
+		System.out.println("Trying to give recognition using short cut '/give recognition dev');
+		Thread.sleep(1000L);
+		slackappobject.inputTextField.sendKeys(Keys.ENTER);
+		Thread.sleep(1000L);
+		giveRecognitionFunc();
+
+	}
+	
 	
 	public void giveRecognitionFunc() throws InterruptedException {
 		Thread.sleep(1000L);
