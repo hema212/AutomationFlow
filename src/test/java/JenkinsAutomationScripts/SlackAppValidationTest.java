@@ -89,11 +89,11 @@ public class SlackAppValidationTest extends InitiateDriver{
 		System.out.println("entering into testcase 4");
 		Thread.sleep(1000L);
 		slackappobject.selectTeamMember().sendKeys(Keys.ENTER);
-		System.out.println("entering into testcase 4");
+		Thread.sleep(1000);
 		slackappobject.giveRecognitionButton().click();
-		System.out.println("entering into testcase 4");
+		System.out.println("entering into testcase 422");
 		String alertTextCapture = slackappobject.AlertText().getText();
-		System.out.println("entering into testcase 4");
+		System.out.println("entering into testcase 42");
 		if (alertTextCapture.equalsIgnoreCase("Please complete this required field.")) {
 			System.out.println("entering into testcase 4");
 			slackappobject.amountDropdown().click();
