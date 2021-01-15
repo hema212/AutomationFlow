@@ -39,7 +39,7 @@ public class SlackDeleteUsersInQueuedFlowTest extends SlackSignInViaEmail {
 		Boolean value = recogobject.giveRecognitionText().isDisplayed();
 		System.out.println("Boolean value is" + value);
 		System.out.println("Is give recognition text displayed?" + giveRecogText);
-		Thread.sleep(5000L);
+		Thread.sleep(1000L);
 		System.out.println("Is Avatar icon displayed?" + slackobject.avatarIcon().isDisplayed());
 		slackobject.avatarIcon().click();
 		System.out.println("Is Avatar icon displayed?" + slackobject.avatarIcon().isDisplayed());
