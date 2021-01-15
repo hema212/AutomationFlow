@@ -17,7 +17,7 @@ import slackPageObjects.SlackAppPageObjects;
 import slackPageObjects.SlackIdentityObjects;
 
 //Execute this 7th once SlackIntegrationFlowValidation is done
-public class SlackAppValidation extends InitiateDriver {
+public class SlackAppValidation{
 	public WebDriver driver;
 	public static Logger log = LogManager.getLogger(SlackAppValidation.class.getName());
 	public SlackAppPageObjects slackappobject;
