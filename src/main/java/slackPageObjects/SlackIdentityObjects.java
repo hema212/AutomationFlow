@@ -37,6 +37,7 @@ public class SlackIdentityObjects {
 	By ManagePageEditIcon = By.xpath("//button[@aria-label='Edit'][1]");
 	By ManagePageEditModalHeader = By.id("form-dialog-title");
 	By ManagePageDeleteIcon = By.xpath("//button[@aria-label='Edit'][2]");
+	By ActiveMembersCount = By.xpath("//div[@class='sc-bdnylx iIpJwe']/following-sibling::div[1]");
 
 	// Slack Connect flow xpath for newly added user
 	By SetupSlackFirstStepText = By.xpath("//div[@class='row top-buffer-row']/div/div/p[1]");
@@ -265,6 +266,10 @@ public class SlackIdentityObjects {
 
 	public WebElement ManagePageDeleteIcon() {
 		return this.driver.findElement(ManagePageDeleteIcon);
+	}
+	
+	public WebElement ActiveMembersCount() {
+		return this.driver.findElement(ActiveMembersCount);
 	}
 
 	public WebElement ManagePageEditModalHeader() {
