@@ -83,8 +83,10 @@ public class SlackAppValidationTest extends InitiateDriver{
 	public void giveRecognitionFunc() throws InterruptedException {
 		Thread.sleep(1000L);
 		slackappobject.selectTeamMember().sendKeys("fabul");
+		Thread.sleep(1000L);
 		slackappobject.selectTeamMember().sendKeys(Keys.ENTER);
 		Thread.sleep(2000);
+		System.out.println("Keys.enter is successful");
 		slackappobject.giveRecognitionButton().click();
 		System.out.println("entering into testcase 42");
 		String alertTextCapture = slackappobject.AlertText().getText();
