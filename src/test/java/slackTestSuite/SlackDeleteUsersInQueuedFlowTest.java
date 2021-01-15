@@ -34,6 +34,9 @@ public class SlackDeleteUsersInQueuedFlowTest extends SlackSignInViaEmail {
 	public void managePageSetup() throws InterruptedException {
 		Thread.sleep(3000L);
 		String giveRecogText = recogobject.giveRecognitionText().getText();
+		System.out.println("The home page text is" + giveRecogText.isDisplayed());
+		Thread.sleep(1000L);
+		System.out.println("The home page text is" + recogobject.giveRecognitionText().isDisplayed());
 		System.out.println("The home page text is" + giveRecogText);
 		//selectManageSideNavbar();
 		//validateManagePageAssertion();
