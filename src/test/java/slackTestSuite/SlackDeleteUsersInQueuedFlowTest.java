@@ -130,8 +130,10 @@ public class SlackDeleteUsersInQueuedFlowTest extends SlackSignInViaEmail {
 	// Function to validate landing page of Manage
 	public void selectManageSideNavbar() throws InterruptedException {
 		System.out.println("Selecting manage side nav-bar");
-		Thread.sleep(4000L);
+		Thread.sleep(6000L);
+		
 		slackobject.avatarIcon().click();
+		System.out.println("Selecting manage side nav-bar");
 		System.out.println("Clicked on avatar icon");
 		slackobject.AdminText().click();
 		Thread.sleep(1000L);
