@@ -3,7 +3,7 @@
 <suite name="Suite">
   <test thread-count="5" name="Test">
     <classes>
-      <class name="slackTestSuite.SlackAppValidation"/>
+      <class name="slackTestSuite.SlackDeleteUsersInQueuedFlowTest"/>
     </classes>
-  </test> <!-- Test -->
+  </test> <!-- Test --SlackAppValidation>
 </suite> <!-- Suite -->
