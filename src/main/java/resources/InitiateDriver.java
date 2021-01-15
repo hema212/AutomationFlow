@@ -22,12 +22,12 @@ public class InitiateDriver {
 
 	@BeforeTest
 	public WebDriver initializeDriver() throws IOException, FileNotFoundException {
-		System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Work\\chromedriver.exe");
 		try {
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments(Arrays.asList("--no-sandbox", "--ignore-certificate-errors", "--homepage=about:blank",
 					"--no-first-run"));
-			options.addArguments("disable-infobars", "headless");
+			//options.addArguments("disable-infobars", "headless");
 			options.setCapability(ChromeOptions.CAPABILITY, options);
 			options.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
 			driver = new ChromeDriver(options);
@@ -39,6 +39,7 @@ public class InitiateDriver {
 			throw new Error(e);
 
 		}
+		
 		return driver;
 	}
 	
