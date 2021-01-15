@@ -40,7 +40,7 @@ public class SlackDeleteUsersInQueuedFlowTest extends SlackSignInViaEmail {
 		System.out.println("Boolean value is" + value);
 		System.out.println("Is give recognition text displayed?" + giveRecogText);
 		Thread.sleep(1000L);
-		lackobject.avatarIcon().click();
+		slackobject.avatarIcon().click();
 		//selectManageSideNavbar();
 		//validateManagePageAssertion();
 		//log.info("Testcase-1 passed since application landed on Manage page and Assertion passed");
