@@ -5,5 +5,5 @@
     <classes>
       <class name="slackTestSuite.SlackDeleteUsersInQueuedFlowTest"/>
     </classes>
-  </test> <!-- Test --SlackAppValidation>
+  </test> <!-- Test -->
 </suite> <!-- Suite -->
