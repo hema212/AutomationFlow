@@ -19,7 +19,7 @@ import resources.InitiateDriver;
 import signInViaEmail.SlackSignInViaEmail;
 import slackPageObjects.SlackIdentityObjects;
 
-public class SlackDeleteUsersInQueuedFlowTest  extends InitiateDriver  {
+public class SlackDeleteUsersInQueuedFlowTest  extends SlackSignInViaEmail  {
 	public  WebDriver driver;
 	public  SlackIdentityObjects slackobject;
 	public  RecognitionPageObject recogobject;
@@ -382,33 +382,7 @@ public class SlackDeleteUsersInQueuedFlowTest  extends InitiateDriver  {
 
 	}
 	
-	public void validateValidLogin() throws InterruptedException {
-
-		log.info("executing on the browser " + baseurl);
-		log.info("Navigated to the provided URL");
-		// Create an object for loginObjects class of pageObjects
-		loginPageObjects loginobject = new loginPageObjects(driver);
-		String actualheader = loginobject.getHeader().getText();
-		String expectedheader = "Welcome back!";
-		// Check for Assertion
-		Assert.assertEquals(actualheader, expectedheader);
-		log.info("Assertion passed for login page");
-		loginobject.getUsernameObject().sendKeys("hema+21@joinassembly.com");
-		loginobject.getPasswordObject().sendKeys("jonSnow09!");
-		Thread.sleep(2000L);
-		loginobject.signinObject().click();
-		RecognitionPageObject recogobject = new RecognitionPageObject(driver);
-		Thread.sleep(4000L);
-		String mainContent = recogobject.giveRecognitionText().getText();
-		if (mainContent == null) {
-			log.info("failed to login!");
-		} else {
-			log.info("Successfully logged into Assembly homepage!");
-			Assert.assertEquals(mainContent, "Give Recognition");
-			log.info("Assertion Passed for homepage landing");
-		}
-	}
-
+	
 
 
 }
