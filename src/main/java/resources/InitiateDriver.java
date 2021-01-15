@@ -25,12 +25,22 @@ public class InitiateDriver {
 		System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
 		try {
 			ChromeOptions options = new ChromeOptions();
-			options.addArguments(Arrays.asList("--no-sandbox", "--ignore-certificate-errors", "--homepage=about:blank",
-					"--no-first-run"));
-			options.addArguments("disable-infobars", "headless");
+			options.addArguments("--headless");
+			options.addArguments("--test-type");
+			options.addArguments("--disable-gpu");
+			options.addArguments("--no-first-run");
+			options.addArguments("--no-default-browser-check");
+			options.addArguments("--ignore-certificate-errors");
+			options.addArguments("--start-maximized");
+			options.addArguments("--allow-insecure-localhost");
+			options.addArguments("--window-size=1280,800");
+
+			//specifically this line here :)
+			options.setCapability("acceptInsecureCerts", true);
 			options.setCapability(ChromeOptions.CAPABILITY, options);
 			options.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
 			driver = new ChromeDriver(options);
+			System.out.println("options are : " + options);
 			System.out.println("options are : " + options);
 		}
 		
