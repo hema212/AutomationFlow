@@ -72,6 +72,7 @@ public class SlackAppValidationTest extends InitiateDriver{
 	public void ValidateGiveRecogUsingShortcut() throws InterruptedException {
 		Thread.sleep(4000L);
 		slackappobject.inputTextField().sendKeys("/give recognition dev ");
+		ystem.out.println("Trying to give recognition using /give recognition dev ");
 		Thread.sleep(1000L);
 		slackappobject.inputTextField().sendKeys(Keys.ENTER);
 		Thread.sleep(1000L);
