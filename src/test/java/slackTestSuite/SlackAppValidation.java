@@ -67,7 +67,7 @@ public class SlackAppValidation extends BaseDriver {
 		} 
 		//slackappobject.continueWithoutAuthorizationButton().click(); 
 		Thread.sleep(1000L);
-	//	giveRecognitionFunc();
+		giveRecognitionFunc();
 
 	}
 
