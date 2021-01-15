@@ -51,7 +51,7 @@ public class SlackAppValidationTest extends InitiateDriver{
 	}
 
 	// Validate Give Recognition using slack app
-	/*@Test(priority = 3)
+	@Test(priority = 3)
 	public void ValidateGiveRecogUsingSlash() throws InterruptedException {
 		Thread.sleep(4000L);
 		slackappobject.inputTextField().sendKeys("/give-recognition-dev ");
@@ -64,9 +64,9 @@ public class SlackAppValidationTest extends InitiateDriver{
 		  }
 		Thread.sleep(1000L);
 		giveRecognitionFunc();
-
+		System.out.println("Testcase-3 passed since recognition is given");
 	}
-	*/
+	
 // Validate Give Recognition using short cut
 	@Test(priority = 4)
 	public void ValidateGiveRecogUsingShortcut() throws InterruptedException {
@@ -76,6 +76,7 @@ public class SlackAppValidationTest extends InitiateDriver{
 		slackappobject.inputTextField().sendKeys(Keys.ENTER);
 		Thread.sleep(1000L);
 		giveRecognitionFunc();
+		System.out.println("Testcase-4 passed since recognition is given");
 
 	}
 
@@ -88,11 +89,8 @@ public class SlackAppValidationTest extends InitiateDriver{
 		Thread.sleep(2000);
 		System.out.println("Keys.enter is successful");
 		slackappobject.giveRecognitionButton().click();
-		System.out.println("entering into testcase 42");
 		String alertTextCapture = slackappobject.AlertText().getText();
-		System.out.println("entering into testcase 42");
 		if (alertTextCapture.equalsIgnoreCase("Please complete this required field.")) {
-			System.out.println("entering into testcase 42");
 			slackappobject.amountDropdown().click();
 			Thread.sleep(1000L);
 			slackappobject.customAmountText().click();
@@ -102,11 +100,9 @@ public class SlackAppValidationTest extends InitiateDriver{
 			Thread.sleep(1000L);
 			slackappobject.giveRecognitionButton().click();
 		}
-		System.out.println("entering into testcase 45");
 		Thread.sleep(1000L);
 		System.out.println("The header text is " + slackappobject.recogSentHeader().getText());
 		Assert.assertEquals(slackappobject.recogSentHeader().getText(), "Give recognition");
-		System.out.println("Testcase-3 passed since recognition is given");
 		Thread.sleep(1000L);
 		slackappobject.closeButton().click();
 	}
