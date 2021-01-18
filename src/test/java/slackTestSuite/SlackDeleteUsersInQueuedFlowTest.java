@@ -59,9 +59,9 @@ public class SlackDeleteUsersInQueuedFlowTest extends BaseDriver {
 	public void ValidateGiveRecogUsingSlash() throws InterruptedException {
 		Thread.sleep(2000L);
 		slackappobject.inputTextField().sendKeys("/give-recognition-dev");
-		slackappobject.inputTextField().sendKeys(Keys.ENTER);
 		slackappobject.sendButton().isDisplayed();
-
+		Thread.sleep(1000L);
+		slackappobject.inputTextField().sendKeys(Keys.ENTER);
 		System.out.println("Is send button is Displayed? " + slackappobject.sendButton().isDisplayed());
 		if (true) {
 			slackappobject.sendButton().click();
@@ -76,13 +76,13 @@ public class SlackDeleteUsersInQueuedFlowTest extends BaseDriver {
 	public void ValidateGiveRecogUsingShortcut() throws InterruptedException {
 		Thread.sleep(1000L);
 		slackappobject.inputTextField().sendKeys("/give recognition dev");
+		slackappobject.sendButton().isDisplayed();
+		Thread.sleep(1000L);
 		slackappobject.inputTextField().sendKeys(Keys.ENTER);
-		//slackappobject.sendButton().isDisplayed();
-
-		//System.out.println("Is send button is Displayed? " + slackappobject.sendButton().isDisplayed());
-		//if (true) {
-		//	slackappobject.sendButton().click();
-		//} 
+		System.out.println("Is send button is Displayed? " + slackappobject.sendButton().isDisplayed());
+		if (true) {
+			slackappobject.sendButton().click();
+		} 
 		//slackappobject.continueWithoutAuthorizationButton().click(); 
 		Thread.sleep(1000L);
 		giveRecognitionFunc();
