@@ -25,7 +25,7 @@ public class SlackAppValidation extends BaseDriver {
 
 	@BeforeTest
 	public void Init() throws FileNotFoundException, IOException {
-		// driver = initializeDriver();
+		driver = initializeDriver();
 		slackappobject = new SlackAppPageObjects(driver);
 		slackobject = new SlackIdentityObjects(driver);
 
@@ -65,6 +65,23 @@ public class SlackAppValidation extends BaseDriver {
 		if (true) {
 			slackappobject.sendButton().click();
 		} 
+		//slackappobject.continueWithoutAuthorizationButton().click(); 
+		Thread.sleep(1000L);
+		giveRecognitionFunc();
+
+	}
+	
+	@Test(priority = 4)
+	public void ValidateGiveRecogUsingSlash() throws InterruptedException {
+		Thread.sleep(1000L);
+		slackappobject.inputTextField().sendKeys("/give recognition dev");
+		slackappobject.inputTextField().sendKeys(Keys.ENTER);
+		//slackappobject.sendButton().isDisplayed();
+
+		//System.out.println("Is send button is Displayed? " + slackappobject.sendButton().isDisplayed());
+		//if (true) {
+		//	slackappobject.sendButton().click();
+		//} 
 		//slackappobject.continueWithoutAuthorizationButton().click(); 
 		Thread.sleep(1000L);
 		giveRecognitionFunc();
