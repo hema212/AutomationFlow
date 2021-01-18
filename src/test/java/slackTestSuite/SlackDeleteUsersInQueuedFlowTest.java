@@ -57,6 +57,7 @@ public class SlackDeleteUsersInQueuedFlowTest extends BaseDriver {
 
 	@Test(priority = 3)
 	public void ValidateGiveRecogUsingSlash() throws InterruptedException {
+		Thread.sleep(2000L);
 		slackappobject.inputTextField().sendKeys("/give-recognition-dev");
 		slackappobject.inputTextField().sendKeys(Keys.ENTER);
 		slackappobject.sendButton().isDisplayed();
